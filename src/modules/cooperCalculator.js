@@ -62,7 +62,7 @@ const CooperCalculator = (distance, gender, age) => {
   distanceRanges.forEach((dRange, index) => {
     if (
       (dRange.match(/>\d*/) && distance >= parseInt(dRange.slice(1), 10)) || 
-      (dRange.match(/<\d*/) && distance < parseInt(dRange.slice(1), 10))
+      (dRange.match(/\d*/) && distance < parseInt(dRange.slice(1), 10))
     ){
       ratingIndex = index;
     } else {
