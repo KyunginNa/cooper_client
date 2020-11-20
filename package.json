@@ -6,16 +6,20 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "axios": "^0.21.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.0",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "PORT=3001 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "start:silent": "PORT=3001 BROWSER=none react-scripts start",
+    "cy:open": "cypress open",
+    "cypress": "start-server-and-test start:silent http://localhost:3001/ cy:open"
   },
   "eslintConfig": {
     "extends": [
@@ -34,5 +38,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "cypress": "^5.6.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.5",
+    "react-test-renderer": "^17.0.1",
+    "start-server-and-test": "^1.11.5"
   }
 }
