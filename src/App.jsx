@@ -76,8 +76,8 @@ class App extends Component {
               Show past entries
             </button>
           )
-          break;
         }
+        break;
     }
 
     return (
