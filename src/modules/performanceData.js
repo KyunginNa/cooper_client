@@ -34,7 +34,7 @@ const getData = async () => {
     Accept: "application/json",
   };
 
-  const response = await axios.get("/performace_data", {
+  const response = await axios.get("/performance_data", {
     headers: headers,
   });
 
