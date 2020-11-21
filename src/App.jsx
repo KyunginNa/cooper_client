@@ -5,6 +5,9 @@ import InputFields from './components/InputFields';
 import LoginForm from "./components/LoginForm";
 import DisplayPerformanceData from "./components/DisplayPerformanceData";
 import { authenticate } from './modules/auth';
+import Header from './components/Header'
+
+import { Image, Button } from 'semantic-ui-react'
 
 class App extends Component {
   state = {
@@ -46,12 +49,12 @@ class App extends Component {
       case !renderLoginForm && !authenticated:
         renderLogin = (
           <>
-            <button
+            <Button
               id="login"
               onClick={() => this.setState({ renderLoginForm: true })}
             >
               Login
-            </button>
+            </Button>
             <p id="message">{message}</p>
           </>
         );
@@ -67,22 +70,24 @@ class App extends Component {
                 updateIndex={this.state.updateIndex}
                 indexUpdated={() => this.setState({ updateIndex: false })}
               />
-              <button onClick={() => this.setState({ renderIndex: false })}>Hide past entries</button>
+              <Button onClick={() => this.setState({ renderIndex: false })}>Hide past entries</Button>
             </>
           )
         } else {
           performanceDataIndex = (
-            <button id="show-index" onClick={() => this.setState({ renderIndex: true })}>
+            <Button id="show-index" onClick={() => this.setState({ renderIndex: true })}>
               Show past entries
-            </button>
+            </Button>
           )
         }
         break;
-        default:
+      default:
     }
 
     return (
       <>
+        <Header />
+        <Image src='/images/running_icon.png' size='small' alt="Image can't be found" id="running"/>
         <InputFields onChangeHandler={this.onChangeHandler} />
         {renderLogin}
         <DisplayCooperResult

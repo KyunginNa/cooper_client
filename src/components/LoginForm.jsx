@@ -1,15 +1,36 @@
-import React from 'react'
+import React from 'react';
+import {  Form, Input, Button } from 'semantic-ui-react'
 
 const LoginForm = ({ submitFormHandler }) => {
   return (
-    <form onSubmit={submitFormHandler} id="login-form">
-      <label>Email</label>
-      <input name="email" type="email" id="email"></input>
-
-      <label>Password</label>
-      <input name="password" type="password" id="password"></input>
-      <button id="submit">Submit</button>
-    </form>
+    <Form onSubmit={submitFormHandler} id="login-form">
+      <Form.Group widths='equal'>
+        <Form.Field
+          fluid
+          id='email'
+          name='email'
+          control={Input}
+          label='Email'
+          placeholder='user@mail.com'
+          error={{
+            content: 'Please enter a valid email address',
+            pointing: 'above',
+          }}
+        />
+        <Form.Input
+          fluid
+          label='Password'
+          placeholder='Password'
+          name="password"
+          id="password" />
+        <Form.Field
+          id='submit'
+          control={Button}
+          content='Submit'
+          label='Submit'
+        />
+      </Form.Group>
+    </Form>
   );
 };
 
