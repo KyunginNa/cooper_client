@@ -28,6 +28,8 @@ const DisplayLineChart = ({performanceData}) => {
     }
 
     const options = {
+      responsive: true,
+      maintainAspectRatio: false,
       scales: {
         yAxes: [
           {
@@ -41,9 +43,9 @@ const DisplayLineChart = ({performanceData}) => {
     graph = <Line data={data} options={options} />
   
   return (
-    <>
+    <div class="chartSize">
     {graph}
-    </>
+    </div>
     );   
 }
 

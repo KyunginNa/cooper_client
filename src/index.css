@@ -15,3 +15,13 @@ code {
 #running {
   margin-left: 50em;
 }
+
+.chartDivider {
+  padding: 30px;
+}
+
+.chartSize {
+width: 600px;
+height: 600px;
+margin-left: 20em;
+}
