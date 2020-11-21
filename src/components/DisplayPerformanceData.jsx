@@ -36,19 +36,8 @@ class DisplayPerformanceData extends Component {
         labels.push(entry.data.message);
         age.push(entry.data.age)
       });
-
-      // <div>
-      //   {this.state.performanceData.map((item) => {
-      //     return (
-      //       <div key={item.id}>
-      //       <p>{item.data.message}</p>
-      //       <p>{item.data.age}</p>
-      //       <p>{item.data.distance}</p>
-      //       </div>
-      //     )
-      //   })}
-      // </div>
     }
+
 
     const data = {
       labels: age,
