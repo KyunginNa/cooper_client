@@ -19,6 +19,7 @@ const LoginForm = ({ submitFormHandler }) => {
         />
         <Form.Input
           fluid
+          type="password"
           label='Password'
           placeholder='Password'
           name="password"

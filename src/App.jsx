@@ -7,7 +7,7 @@ import DisplayPerformanceData from "./components/DisplayPerformanceData";
 import { authenticate } from './modules/auth';
 import Header from './components/Header'
 
-import { Image, Button } from 'semantic-ui-react'
+import { Image, Button, Message } from 'semantic-ui-react'
 
 class App extends Component {
   state = {
@@ -55,13 +55,17 @@ class App extends Component {
             >
               Login
             </Button>
+            
             <p id="message">{message}</p>
+            
           </>
         );
         break;
       case authenticated:
         renderLogin = (
+          <Message>
           <p id="message"> Hi {JSON.parse(sessionStorage.getItem("credentials")).uid}</p>
+          </Message>
         );
         if (this.state.renderIndex) {
           performanceDataIndex = (

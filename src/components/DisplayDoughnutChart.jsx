@@ -28,6 +28,8 @@ const DisplayDoughnutChart = ({performanceData}) => {
     const data = {
       labels: labels,
 
+      
+      
       datasets: [
         {
           label: "Result",
@@ -52,12 +54,18 @@ const DisplayDoughnutChart = ({performanceData}) => {
       ],
     }
 
-    doughnut = <Doughnut data={data} />
+    const options = {
+      responsive: true,
+      maintainAspectRatio: false,
+    }
+
+    doughnut = <Doughnut data={data} options={options}/>
+    
   
   return (
-    <>
+    <div class="chartSize">
     {doughnut}
-    </>
+    </div>
     );   
 }
 
