@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { getData } from "../modules/performanceData";
+import { Line } from "react-chartjs-2";
 
 class DisplayPerformanceData extends Component {
   state = {
@@ -24,21 +25,59 @@ class DisplayPerformanceData extends Component {
   }
 
   render() {
-    let dataIndex;
+    let graph;
+    let distances = [];
+    let labels = [];
+    let age = [];
 
     if (this.state.performanceData != null) {
-      dataIndex = (
-        <div>
-          {this.state.performanceData.map(item => {
-            return <div key={item.id}>{item.data.message}</div>
-          })}
-        </div>
-      )
+      this.state.performanceData.forEach((entry) => {
+        distances.push(entry.data.distance);
+        labels.push(entry.data.message);
+        age.push(entry.data.age)
+      });
+
+      // <div>
+      //   {this.state.performanceData.map((item) => {
+      //     return (
+      //       <div key={item.id}>
+      //       <p>{item.data.message}</p>
+      //       <p>{item.data.age}</p>
+      //       <p>{item.data.distance}</p>
+      //       </div>
+      //     )
+      //   })}
+      // </div>
     }
 
+    const data = {
+      labels: age,
+      datasets: [
+        {
+          label: "Previous result",
+          data: distances,
+          backgroundColor: 'transparent',
+          borderColor: 'blue',
+        }
+      ],
+    }
+
+    const options = {
+      scales: {
+        yAxes: [
+          {
+            ticks: {
+              beginAtZero: true,
+            },
+          },
+        ],
+      },
+    }
+    graph = <Line data={data} options={options} />
+
     return (
-      <div>
-        {dataIndex}
+      <div id="index">
+        {graph}
       </div>
     )
   }
