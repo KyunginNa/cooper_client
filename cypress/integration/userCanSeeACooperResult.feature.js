@@ -4,6 +4,7 @@ describe("Calculates a cooper test result successfully", () => {
     cy.get('[data-cy="input-distance"]').type("1000");
     cy.get('[data-cy="input-gender"]').select("female");
     cy.get('[data-cy="input-age"]').type("23");
+    cy.get('[data-cy="btn-result"]').click();
   });
   it("displays a cooper test message", () => {
     cy.get('[data-cy="cooper-message"]').should(
