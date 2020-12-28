@@ -1,14 +1,11 @@
-import React from 'react'
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 const InputForm = () => {
   const dispatch = useDispatch()
-  const distance = useSelector(state => state.distance)
-  const gender = useSelector(state => state.gender)
-  const age = useSelector(state => state.age)
+  const userInput = useSelector(state => state.input)
   const onSubmitHandler = e => {
     e.preventDefault()
-    debugger
     dispatch({
       type: 'SAVE_INPUTS',
       payload: {
@@ -49,7 +46,7 @@ const InputForm = () => {
         />
       </form>
       <p data-cy="cooper-message">
-        {age} years old {gender} running {distance} meters.
+        {userInput.age} years old {userInput.gender} running {userInput.distance} meters.
       </p>
     </>
   )

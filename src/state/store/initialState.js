@@ -1,7 +1,9 @@
 const initialState = {
-  distance: "",
-  gender: "",
-  age: "",
+  input: {
+    distance: "",
+    gender: "",
+    age: "",
+  },
 };
 
-export default initialState
+export default initialState;

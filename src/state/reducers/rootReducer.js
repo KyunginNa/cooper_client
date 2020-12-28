@@ -4,9 +4,11 @@ const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case "SAVE_INPUTS":
       return {
-        distance: action.payload.distance,
-        gender: action.payload.gender,
-        age: action.payload.age,
+        input: {
+          distance: action.payload.distance,
+          gender: action.payload.gender,
+          age: action.payload.age,
+        },
       };
     default:
       return state;
