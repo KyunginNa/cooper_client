@@ -4,6 +4,8 @@ const initialState = {
     gender: "",
     age: "",
   },
+  authenticated: "",
+  credentials: {},
 };
 
 export default initialState;

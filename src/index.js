@@ -4,8 +4,16 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import configureStore from "./state/store/configureStore";
 import { Provider } from "react-redux";
+import axios from "axios";
 
 const store = configureStore();
+let apiUrl;
+if (process.env.NODE_ENV === "production") {
+  apiUrl = "https://ak-cooper-api.herokuapp.com/";
+} else {
+  apiUrl = "http://localhost:3000/api";
+}
+axios.defaults.baseURL = apiUrl;
 
 ReactDOM.render(
   <Provider store={store}>

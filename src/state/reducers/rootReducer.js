@@ -12,6 +12,17 @@ const rootReducer = (state = initialState, action) => {
           submitted: true,
         },
       };
+    case "SET_AUTH_CREDENTIALS":
+      return {
+        ...state,
+        authenticated: true,
+        credentials: action.payload,
+      };
+    case "LOGIN_FAILED":
+      return {
+        ...state,
+        authenticated: false,
+      };
     default:
       return state;
   }

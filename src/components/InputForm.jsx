@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 const InputForm = () => {
   const dispatch = useDispatch()
   const userInput = useSelector(state => state.input)
-  const onSubmitHandler = e => {
+  const saveCooperInputs = e => {
     e.preventDefault()
     dispatch({
       type: 'SAVE_INPUTS',
@@ -18,7 +18,7 @@ const InputForm = () => {
 
   return (
     <>
-      <form onSubmit={onSubmitHandler}>
+      <form onSubmit={saveCooperInputs}>
         <label>Distance</label>
         <input
           type="text"
