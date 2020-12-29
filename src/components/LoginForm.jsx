@@ -7,7 +7,6 @@ const LoginForm = () => {
   const authenticateUser = async (e) => {
     e.preventDefault()
     let response = await authenticate(e.target.email.value, e.target.password.value)
-    debugger
     if (response === false) {
       dispatch({ type: "LOGIN_FAILED" });
     } else {
