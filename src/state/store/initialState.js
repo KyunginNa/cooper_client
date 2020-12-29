@@ -4,7 +4,7 @@ const initialState = {
     gender: "",
     age: "",
   },
-  authenticated: "",
+  renderLoginForm: true,
   credentials: {},
 };
 

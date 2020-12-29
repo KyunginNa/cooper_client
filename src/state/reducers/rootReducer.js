@@ -15,6 +15,7 @@ const rootReducer = (state = initialState, action) => {
     case "SET_AUTH_CREDENTIALS":
       return {
         ...state,
+        renderLoginForm: false,
         authenticated: true,
         credentials: action.payload,
       };
