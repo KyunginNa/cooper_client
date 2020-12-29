@@ -11,7 +11,7 @@ const InputForm = () => {
       payload: {
         distance: e.target.distance.value,
         gender: e.target.gender.value,
-        age: e.target.age.value
+        age: e.target.age.value,
       }
     })
   }
@@ -45,9 +45,11 @@ const InputForm = () => {
           data-cy="btn-result"
         />
       </form>
-      <p data-cy="cooper-message">
-        {userInput.age} years old {userInput.gender} running {userInput.distance} meters.
-      </p>
+      {userInput.submitted && (
+        <p data-cy="cooper-message">
+          {userInput.age} years old {userInput.gender} running {userInput.distance} meters.
+        </p>
+      )}
     </>
   )
 }

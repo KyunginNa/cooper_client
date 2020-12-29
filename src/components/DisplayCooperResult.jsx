@@ -6,9 +6,13 @@ const DisplayCooperResult = () => {
   const userInput = useSelector(state => state.input)
   let cooperResult = cooperCalculator(userInput.distance, userInput.gender, userInput.age)
   return (
-    <p data-cy="cooper-result">
-      Result: {cooperResult}
-    </p>
+    <>
+      {userInput.submitted && (
+        <p data-cy="cooper-result">
+          Result: {cooperResult}
+        </p>
+      )}
+    </>
   )
 }
 

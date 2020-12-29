@@ -8,6 +8,7 @@ const rootReducer = (state = initialState, action) => {
           distance: action.payload.distance,
           gender: action.payload.gender,
           age: action.payload.age,
+          submitted: true,
         },
       };
     default:
