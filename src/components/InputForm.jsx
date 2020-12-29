@@ -4,21 +4,21 @@ import { useDispatch, useSelector } from "react-redux";
 const InputForm = () => {
   const dispatch = useDispatch()
   const userInput = useSelector(state => state.input)
-  const onSubmitHandler = e => {
+  const saveCooperInputs = e => {
     e.preventDefault()
     dispatch({
       type: 'SAVE_INPUTS',
       payload: {
         distance: e.target.distance.value,
         gender: e.target.gender.value,
-        age: e.target.age.value
+        age: e.target.age.value,
       }
     })
   }
 
   return (
     <>
-      <form onSubmit={onSubmitHandler}>
+      <form onSubmit={saveCooperInputs}>
         <label>Distance</label>
         <input
           type="text"
@@ -45,9 +45,11 @@ const InputForm = () => {
           data-cy="btn-result"
         />
       </form>
-      <p data-cy="cooper-message">
-        {userInput.age} years old {userInput.gender} running {userInput.distance} meters.
-      </p>
+      {userInput.submitted && (
+        <p data-cy="cooper-message">
+          {userInput.age} years old {userInput.gender} running {userInput.distance} meters.
+        </p>
+      )}
     </>
   )
 }
