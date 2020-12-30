@@ -24,11 +24,13 @@ const InputForm = () => {
           type="text"
           name="distance"
           data-cy="input-distance"
+          onChange={() => dispatch({ type: 'INPUT_CHANGE' })}
         />
         <label>Gender</label>
         <select
           name="gender"
           data-cy="input-gender"
+          onChange={() => dispatch({ type: 'INPUT_CHANGE' })}
         >
           <option value="female">Female</option>
           <option value="male">Male</option>
@@ -38,6 +40,7 @@ const InputForm = () => {
           type="text"
           name="age"
           data-cy="input-age"
+          onChange={() => dispatch({ type: 'INPUT_CHANGE' })}
         />
         <input
           type="submit"
