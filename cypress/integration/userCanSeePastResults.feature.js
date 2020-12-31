@@ -11,8 +11,8 @@ describe("User can see past results", () => {
     });
     cy.route({
       method: "GET",
-      url: "http://localhost:3000/api/performance_data_index.json",
-      response: "fixture:performance_data",
+      url: "http://localhost:3000/api/performance_data",
+      response: "fixture:performance_data_index.json",
     });
     cy.visit("/");
     cy.get("[data-cy='input-email']").type("user@test.com");

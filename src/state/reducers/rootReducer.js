@@ -37,6 +37,11 @@ const rootReducer = (state = initialState, action) => {
         },
         resultSaved: false,
       };
+    case "GET_PAST_RESULTS":
+      return {
+        ...state,
+        pastResults: action.payload,
+      };
     default:
       return state;
   }
