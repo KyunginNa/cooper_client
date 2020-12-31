@@ -8,6 +8,7 @@ const initialState = {
   renderLoginForm: true,
   credentials: {},
   resultSaved: false,
+  pastResults: [],
 };
 
 export default initialState;
