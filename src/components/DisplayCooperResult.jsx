@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import cooperCalculator from "../modules/cooperCalculator";
+import axios from "axios";
 
 const DisplayCooperResult = () => {
   const dispatch = useDispatch()
@@ -8,8 +9,31 @@ const DisplayCooperResult = () => {
   const userInput = useSelector(state => state.input)
   const authenticated = useSelector(state => state.authenticated)
   const resultSaved = useSelector(state => state.resultSaved)
+  const credentials = useSelector(state => state.credentials)
 
   let cooperResult = cooperCalculator(userInput.distance, userInput.gender, userInput.age)
+  const saveResult = async () => {
+    const headers = {
+      ...credentials,
+      "Content-type": "application/json",
+      Accept: "application/json"
+    }
+    debugger
+    try {
+      await axios.post("/performance_data",
+        {
+          performance_data: { data: { result: cooperResult } }
+        }, {
+          headers: headers
+        }
+      )
+      dispatch({ type: 'SAVE_RESULT' })
+    } catch (error) {
+      console.error(error)
+      alert("Something went wrong")
+    }
+  }
+
   return (
     <>
       {userInput.submitted && (
@@ -27,7 +51,7 @@ const DisplayCooperResult = () => {
         !resultSaved &&
         <button
           data-cy="btn-save"
-          onClick={() => dispatch({ type: 'SAVE_RESULT' })}
+          onClick={saveResult}
         >Save
       </button>
       }
