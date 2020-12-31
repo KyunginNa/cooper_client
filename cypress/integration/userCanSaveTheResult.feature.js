@@ -4,7 +4,7 @@ describe("User can save the cooper result", () => {
     cy.route({
       method: "POST",
       url: "http://localhost:3000/api/auth/sign_in",
-      response: "fixture:successful_login",
+      response: "fixture:successful_login.json",
       headers: {
         uid: "user@test.com",
       },
