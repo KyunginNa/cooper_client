@@ -1,9 +1,9 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const InputForm = () => {
   const dispatch = useDispatch()
-   const saveCooperInputs = e => {
+  const saveCooperInputs = e => {
     e.preventDefault()
     dispatch({
       type: 'SAVE_INPUTS',
