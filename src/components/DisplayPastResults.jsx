@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import axios from 'axios'
 
@@ -7,26 +7,21 @@ const DisplayPastResults = () => {
 
   const credentials = useSelector(state => state.credentials)
   const pastResults = useSelector(state => state.pastResults)
-  //useEffect
 
   const getResult = async () => {
-    try {
-      let pastResults = await axios.get("/performance_data",
-        {
-          headers: {
-            ...credentials,
-            "Content-type": "application/json",
-            Accept: "application/json"
-          }
+    let pastResults = await axios.get("/performance_data",
+      {
+        headers: {
+          ...credentials,
+          "Content-type": "application/json",
+          Accept: "application/json"
         }
-      )
-      dispatch({ type: 'GET_PAST_RESULTS', payload: pastResults.data.entries })
-      debugger
-    } catch (error) {
-      console.error(error)
-      alert("Something went wrong")
-    }
+      }
+    )
+    dispatch({ type: 'GET_PAST_RESULTS', payload: pastResults.data.entries })
   }
+
+  useEffect(getResult, [pastResults, dispatch, credentials])
 
   return (
     <>
