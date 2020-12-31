@@ -1,9 +1,8 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const InputForm = () => {
   const dispatch = useDispatch()
-  const userInput = useSelector(state => state.input)
   const saveCooperInputs = e => {
     e.preventDefault()
     dispatch({
@@ -24,11 +23,13 @@ const InputForm = () => {
           type="text"
           name="distance"
           data-cy="input-distance"
+          onChange={() => dispatch({ type: 'INPUT_CHANGE' })}
         />
         <label>Gender</label>
         <select
           name="gender"
           data-cy="input-gender"
+          onChange={() => dispatch({ type: 'INPUT_CHANGE' })}
         >
           <option value="female">Female</option>
           <option value="male">Male</option>
@@ -38,6 +39,7 @@ const InputForm = () => {
           type="text"
           name="age"
           data-cy="input-age"
+          onChange={() => dispatch({ type: 'INPUT_CHANGE' })}
         />
         <input
           type="submit"
@@ -45,11 +47,6 @@ const InputForm = () => {
           data-cy="btn-result"
         />
       </form>
-      {userInput.submitted && (
-        <p data-cy="cooper-message">
-          {userInput.age} years old {userInput.gender} running {userInput.distance} meters.
-        </p>
-      )}
     </>
   )
 }

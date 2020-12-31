@@ -24,6 +24,19 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         authenticated: false,
       };
+    case "SAVE_RESULT":
+      return {
+        ...state,
+        resultSaved: true,
+      };
+    case "INPUT_CHANGE":
+      return {
+        ...state,
+        input: {
+          submitted: false,
+        },
+        resultSaved: false,
+      };
     default:
       return state;
   }
