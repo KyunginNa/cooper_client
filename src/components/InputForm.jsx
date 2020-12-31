@@ -3,8 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 const InputForm = () => {
   const dispatch = useDispatch()
-  const userInput = useSelector(state => state.input)
-  const saveCooperInputs = e => {
+   const saveCooperInputs = e => {
     e.preventDefault()
     dispatch({
       type: 'SAVE_INPUTS',
@@ -48,11 +47,6 @@ const InputForm = () => {
           data-cy="btn-result"
         />
       </form>
-      {userInput.submitted && (
-        <p data-cy="cooper-message">
-          {userInput.age} years old {userInput.gender} running {userInput.distance} meters.
-        </p>
-      )}
     </>
   )
 }
