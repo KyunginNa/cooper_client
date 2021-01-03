@@ -35,17 +35,17 @@ const DisplayDoughnutChart = () => {
         label: "Result",
         data: numbers,
         backgroundColor: [
-          'lightblue',
-          'steelblue',
           'teal',
+          'steelblue',
+          'lightblue',
           'pink',
           'salmon',
         ],
 
         borderColor: [
-          'lightblue',
-          'steelblue',
           'teal',
+          'steelblue',
+          'lightblue',
           'pink',
           'salmon',
         ],

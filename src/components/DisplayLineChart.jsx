@@ -22,10 +22,10 @@ const DisplayLineChart = () => {
     labels: age,
     datasets: [
       {
-        label: "Previous result",
+        label: "Distance",
         data: distances,
         backgroundColor: 'transparent',
-        borderColor: 'blue',
+        borderColor: 'skyblue',
       }
     ],
   }
