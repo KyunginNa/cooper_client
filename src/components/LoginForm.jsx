@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { authenticate } from "../modules/authenticate";
 import { useDispatch, useSelector } from "react-redux";
-import { Button, Modal, Form } from 'semantic-ui-react'
+import { Button, Modal, Form, Message } from 'semantic-ui-react'
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -29,7 +29,7 @@ const LoginForm = () => {
           onClose={() => setOpen(false)}
           onOpen={() => setOpen(true)}
           open={open}
-          trigger={<Button data-cy="btn-login">Login</Button>}
+          trigger={<Button data-cy="btn-login" basic color='teal'>Login</Button>}
         >
           <Modal.Header>Login</Modal.Header>
           <Modal.Content>
@@ -60,7 +60,11 @@ const LoginForm = () => {
         </Modal>
       }
       { authenticated &&
-        <p data-cy="login-message"> Hello, {credentials.uid}!</p>
+        <Message
+          data-cy="login-message"
+          positive
+        >Hello, {credentials.uid}!
+        </Message>
       }
     </>
   )

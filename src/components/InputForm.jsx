@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Form, Button, Segment } from 'semantic-ui-react'
+import { Form, Button, Segment, Header, Icon } from 'semantic-ui-react'
 
 const InputForm = () => {
   const dispatch = useDispatch()
@@ -18,8 +18,14 @@ const InputForm = () => {
   }
 
   return (
-    <>
-      <Segment color="teal">
+    <div style={{ marginTop: "1em" }}>
+      <Segment attached="top" inverted color='teal'>
+        <Header as='h2'>
+          <Icon name='stopwatch' />
+          <Header.Content>Check Your Cooper Test Result</Header.Content>
+        </Header>
+      </Segment>
+      <Segment attached="bottom" color="teal">
         <Form onSubmit={saveCooperInputs}>
           <Form.Group>
             <Form.Field width="6">
@@ -62,7 +68,7 @@ const InputForm = () => {
           </Form.Field>
         </Form>
       </Segment>
-    </>
+    </div>
   )
 }
 
