@@ -49,6 +49,7 @@ const LoginForm = () => {
                 data-cy="btn-login-submit"
               />
             </form >
+            <button onClick={() => setOpen(false)}>Close</button>
           </Modal.Content>
           <Modal.Description>
             {authenticated === false &&
