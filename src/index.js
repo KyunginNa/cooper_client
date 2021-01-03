@@ -5,6 +5,8 @@ import reportWebVitals from "./reportWebVitals";
 import configureStore from "./state/store/configureStore";
 import { Provider } from "react-redux";
 import axios from "axios";
+import "./index.css";
+import "semantic-ui-css/semantic.min.css";
 
 const store = configureStore();
 let apiUrl;

@@ -6,7 +6,6 @@ const initialState = {
     submitted: false,
   },
   renderLoginForm: true,
-  credentials: {},
   resultSaved: false,
   pastResults: [],
 };

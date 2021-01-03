@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector } from "react-redux";
 import { Line } from "react-chartjs-2";
+import { Container } from 'semantic-ui-react'
 
 const DisplayLineChart = () => {
   const pastResults = useSelector(state => state.pastResults)
@@ -41,10 +42,10 @@ const DisplayLineChart = () => {
       ],
     },
   }
-  graph = <Line data-cy="line-graph" data = { data } options = { options } />
+  graph = <Line data-cy="line-graph" data={data} options={options} />
 
   return (
-    <div data-cy="line-graph">
+    <div data-cy="line-graph" className="chartSize">
       {graph}
     </div>
   );
