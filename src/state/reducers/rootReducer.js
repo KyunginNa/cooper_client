@@ -42,11 +42,6 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         pastResults: action.payload,
       };
-    case "RENDER_RESULT":
-      return {
-        ...state,
-        renderResult: !state.renderResult,
-      };
     default:
       return state;
   }

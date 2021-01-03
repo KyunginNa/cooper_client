@@ -57,7 +57,6 @@ const InputForm = () => {
               type="submit"
               data-cy="btn-result"
               color="teal"
-              onClick={() => dispatch({type: 'RENDER_RESULT'})}
             >See Result
             </Button>
           </Form.Field>

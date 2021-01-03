@@ -29,7 +29,7 @@ describe("User can save the cooper result", () => {
     cy.get('[data-cy="btn-save"]').click();
     cy.get('[data-cy="save-message"]').should(
       "contain",
-      "Your result was saved."
+      "Your result was saved!"
     );
   });
 
@@ -41,14 +41,14 @@ describe("User can save the cooper result", () => {
     cy.get('[data-cy="btn-save"]').click();
     cy.get('[data-cy="save-message"]').should(
       "contain",
-      "Your result was saved."
+      "Your result was saved!"
     );
     cy.get('[data-cy="input-distance"]').clear().type("2000");
     cy.get('[data-cy="btn-result"]').click();
     cy.get('[data-cy="btn-save"]').click();
     cy.get('[data-cy="save-message"]').should(
       "contain",
-      "Your result was saved."
+      "Your result was saved!"
     );
   });
 });

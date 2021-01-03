@@ -7,7 +7,6 @@ const initialState = {
   },
   renderLoginForm: true,
   resultSaved: false,
-  renderResult: false,
   pastResults: [],
 };
 
