@@ -18,13 +18,14 @@ const DisplayCooperResult = () => {
       "Content-type": "application/json",
       Accept: "application/json"
     }
+    debugger
     try {
       await axios.post("/performance_data",
         {
-          performance_data: { data: { result: cooperResult } }
+          performance_data: { data: { age: userInput.age, distance: userInput.distance, result: cooperResult } }
         }, {
-          headers: headers
-        }
+        headers: headers
+      }
       )
       dispatch({ type: 'SAVE_RESULT' })
     } catch (error) {

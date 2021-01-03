@@ -1,12 +1,15 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import DisplayDoughnutChart from "./DisplayDoughnutChart";
+import DisplayLineChart from "./DisplayLineChart";
 import axios from 'axios'
+import { Divider, Grid } from 'semantic-ui-react'
 
 const DisplayPastResults = () => {
   const dispatch = useDispatch()
 
   const credentials = useSelector(state => state.credentials)
-  const pastResults = useSelector(state => state.pastResults)
+  const [renderResults, setRenderResults] = useState(false)
 
   const getResult = async () => {
     let pastResults = await axios.get("/performance_data",
@@ -21,22 +24,37 @@ const DisplayPastResults = () => {
     dispatch({ type: 'GET_PAST_RESULTS', payload: pastResults.data.entries })
   }
 
-  useEffect(getResult, [pastResults, dispatch, credentials])
+  useEffect(getResult, [])
+
+  const toggleResults = () => {
+    setRenderResults(!renderResults)
+  }
 
   return (
     <>
-      <button
-        data-cy="btn-show-index"
-        onClick={getResult}
-      >Show past results
-      </button>
-      <ul data-cy="performance-data-index">
-        {
-          pastResults.map(item => {
-            return <li key={item.id}>{item.data.result}</li>
-          })
-        }
-      </ul>
+      {credentials &&
+        <>
+          <button
+            data-cy="btn-show-index"
+            onClick={() => { getResult(); toggleResults(); }}>
+            Show Past Results
+        </button>
+          {renderResults &&
+            <>
+              <Divider horizontal style={{marginBottom: "-3.5em"}}>Line Chart</Divider>
+              <Grid style={{ paddingTop: "5em" }}>
+                <Grid.Row centered>
+                  <DisplayDoughnutChart />
+                </Grid.Row>
+                <Divider horizontal>Doughnut Chart</Divider>
+                <Grid.Row centered>
+                  <DisplayLineChart />
+                </Grid.Row>
+              </Grid>
+            </>
+          }
+        </>
+      }
     </>
   )
 }

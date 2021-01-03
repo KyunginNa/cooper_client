@@ -21,10 +21,7 @@ describe("User can see past results", () => {
   });
   it("successfully", () => {
     cy.get("[data-cy='btn-show-index']").click();
-    cy.get("[data-cy='performance-data-index']").within(() => {
-      cy.contains("Average");
-      cy.contains("Above average");
-      cy.contains("Poor");
-    });
+    cy.get("[data-cy='doughnut-graph']").should("be.visible");
+    cy.get("[data-cy='line-graph']").should("be.visible");
   });
 });
