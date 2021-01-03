@@ -21,19 +21,23 @@ const DisplayPastResults = () => {
       }
     )
     dispatch({ type: 'GET_PAST_RESULTS', payload: pastResults.data.entries })
-    setRenderResults(!renderResults)
   }
 
   useEffect(getResult, [])
+
+  const toggleResults = () => {
+    setRenderResults(!renderResults)
+  }
 
   return (
     <>
       <button
         data-cy="btn-show-index"
-        onClick={getResult}
-      >Show past results
-      </button>
-      { renderResults &&
+        onClick={() => { getResult(); toggleResults(); }}>
+        Show Past Results
+    </button>
+      {
+        renderResults &&
         <>
           <DisplayDoughnutChart />
           <DisplayLineChart />
@@ -44,10 +48,3 @@ const DisplayPastResults = () => {
 }
 
 export default DisplayPastResults
-
-  // < ul data - cy="performance-data-index" >
-  //   pastResults.map(item => {
-  //     return <li key={item.id}>{item.data.age} {item.data.distance} {item.data.result}</li>
-  //   })
-
-  //       </ul >

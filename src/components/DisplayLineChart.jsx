@@ -41,12 +41,12 @@ const DisplayLineChart = () => {
       ],
     },
   }
-  graph = <Line data={data} options={options} />
+  graph = <Line data-cy="line-graph" data = { data } options = { options } />
 
   return (
-    <>
+    <div data-cy="line-graph">
       {graph}
-    </>
+    </div>
   );
 }
 

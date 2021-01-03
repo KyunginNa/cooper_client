@@ -18,6 +18,7 @@ const DisplayCooperResult = () => {
       "Content-type": "application/json",
       Accept: "application/json"
     }
+    debugger
     try {
       await axios.post("/performance_data",
         {

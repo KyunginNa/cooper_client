@@ -57,9 +57,9 @@ const DisplayDoughnutChart = () => {
   doughnut = <Doughnut data={data} />
 
   return (
-    <>
+    <div data-cy="doughnut-graph">
       {doughnut}
-    </>
+    </div>
   );
 }
 
