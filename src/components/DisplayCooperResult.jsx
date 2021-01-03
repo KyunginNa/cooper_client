@@ -10,6 +10,7 @@ const DisplayCooperResult = () => {
   const authenticated = useSelector(state => state.authenticated)
   const resultSaved = useSelector(state => state.resultSaved)
   const credentials = useSelector(state => state.credentials)
+  const renderResult = useSelector(state => state.renderResult)
 
   let cooperResult = cooperCalculator(userInput.distance, userInput.gender, userInput.age)
   const saveResult = async () => {
@@ -36,16 +37,17 @@ const DisplayCooperResult = () => {
 
   return (
     <>
-      {userInput.submitted && (
-        <>
-          <p data-cy="cooper-message">
-            {userInput.age} years old {userInput.gender} running {userInput.distance} meters.
+      {userInput.submitted && renderResult &&
+        (
+          <>
+            <p data-cy="cooper-message">
+              {userInput.age} years old {userInput.gender} running {userInput.distance} meters.
           </p>
-          <p data-cy="cooper-result">
-            Result: {cooperResult}
-          </p>
-        </>
-      )}
+            <p data-cy="cooper-result">
+              Result: {cooperResult}
+            </p>
+          </>
+        )}
       {userInput.submitted &&
         authenticated &&
         !resultSaved &&
