@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { authenticate } from "../modules/authenticate";
 import { useDispatch, useSelector } from "react-redux";
-import { Button, Modal } from 'semantic-ui-react'
+import { Button, Modal, Form } from 'semantic-ui-react'
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -33,23 +33,25 @@ const LoginForm = () => {
         >
           <Modal.Header>Login</Modal.Header>
           <Modal.Content>
-            <form onSubmit={authenticateUser}>
-              <input
+            <Form onSubmit={authenticateUser}>
+              <Form.Input
+                label="Email"
                 type="email"
                 name="email"
                 data-cy="input-email"
               />
-              <input
+              <Form.Input
+                label="Password"
                 type="password"
                 name="password"
                 data-cy="input-password"
               />
-              <input
+              <Form.Button
                 type="submit"
-                value="Login"
                 data-cy="btn-login-submit"
-              />
-            </form >
+              >Login
+              </Form.Button>
+            </Form >
           </Modal.Content>
           <Modal.Description>
             {authenticated === false &&
