@@ -20,6 +20,7 @@ const DisplayPastResults = () => {
       }
     )
     dispatch({ type: 'GET_PAST_RESULTS', payload: pastResults.data.entries })
+    debugger
     setRenderResults(!renderResults)
   }
 
@@ -36,7 +37,7 @@ const DisplayPastResults = () => {
         <ul data-cy="performance-data-index">
           {renderResults &&
             pastResults.map(item => {
-              return <li key={item.id}>{item.data.result}</li>
+              return <li key={item.id}>{item.data.age} {item.data.distance} {item.data.result}</li>
             })
           }
         </ul>
