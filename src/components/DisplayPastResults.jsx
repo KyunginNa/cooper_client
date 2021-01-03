@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import DisplayDoughnutChart from "./DisplayDoughnutChart";
 import DisplayLineChart from "./DisplayLineChart";
 import axios from 'axios'
-import { Divider, Grid } from 'semantic-ui-react'
+import { Divider, Grid, Button } from 'semantic-ui-react'
 
 const DisplayPastResults = () => {
   const dispatch = useDispatch()
@@ -34,14 +34,15 @@ const DisplayPastResults = () => {
     <>
       {credentials &&
         <>
-          <button
+          <Button
             data-cy="btn-show-index"
-            onClick={() => { getResult(); toggleResults(); }}>
-            Show Past Results
-        </button>
+            onClick={() => { getResult(); toggleResults(); }}
+            color="teal"
+          >Show Past Results
+          </Button>
           {renderResults &&
             <>
-              <Divider horizontal style={{marginBottom: "-3.5em"}}>Line Chart</Divider>
+              <Divider horizontal style={{ marginBottom: "-3.5em" }}>Line Chart</Divider>
               <Grid style={{ paddingTop: "5em" }}>
                 <Grid.Row centered>
                   <DisplayDoughnutChart />
