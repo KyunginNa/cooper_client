@@ -12,12 +12,13 @@ describe("User can save the cooper result", () => {
     cy.route({
       method: "POST",
       url: "http://localhost:3000/api/performance_data",
-      response: []
+      response: [],
     });
     cy.visit("/");
+    cy.get("[data-cy='btn-login']").click();
     cy.get("[data-cy='input-email']").type("user@test.com");
     cy.get("[data-cy='input-password']").type("password");
-    cy.get("[data-cy='btn-login']").click();
+    cy.get("[data-cy='btn-login-submit']").click();
   });
 
   it("successfully", () => {

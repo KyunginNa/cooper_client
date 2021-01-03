@@ -15,9 +15,10 @@ describe("User can see past results", () => {
       response: "fixture:performance_data_index.json",
     });
     cy.visit("/");
+    cy.get("[data-cy='btn-login']").click();
     cy.get("[data-cy='input-email']").type("user@test.com");
     cy.get("[data-cy='input-password']").type("password");
-    cy.get("[data-cy='btn-login']").click();
+    cy.get("[data-cy='btn-login-submit']").click();
   });
   it("successfully", () => {
     cy.get("[data-cy='btn-show-index']").click();
