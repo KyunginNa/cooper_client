@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import axios from 'axios'
 
@@ -7,6 +7,7 @@ const DisplayPastResults = () => {
 
   const credentials = useSelector(state => state.credentials)
   const pastResults = useSelector(state => state.pastResults)
+  const [renderResults, setRenderResults] = useState(false)
 
   const getResult = async () => {
     let pastResults = await axios.get("/performance_data",
@@ -19,9 +20,10 @@ const DisplayPastResults = () => {
       }
     )
     dispatch({ type: 'GET_PAST_RESULTS', payload: pastResults.data.entries })
+    setRenderResults(!renderResults)
   }
 
-  useEffect(getResult, [pastResults, dispatch, credentials])
+  useEffect(getResult, [])
 
   return (
     <>
@@ -30,13 +32,15 @@ const DisplayPastResults = () => {
         onClick={getResult}
       >Show past results
       </button>
-      <ul data-cy="performance-data-index">
-        {
-          pastResults.map(item => {
-            return <li key={item.id}>{item.data.result}</li>
-          })
-        }
-      </ul>
+      {
+        <ul data-cy="performance-data-index">
+          {renderResults &&
+            pastResults.map(item => {
+              return <li key={item.id}>{item.data.result}</li>
+            })
+          }
+        </ul>
+      }
     </>
   )
 }
