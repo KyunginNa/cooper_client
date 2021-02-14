@@ -24,7 +24,7 @@ const DisplayPastResults = () => {
     dispatch({ type: 'GET_PAST_RESULTS', payload: pastResults.data.entries })
   }
 
-  useEffect(getResult, [])
+  useEffect(() => { getResult() })
 
   const toggleResults = () => {
     setRenderResults(!renderResults)

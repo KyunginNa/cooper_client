@@ -1,7 +1,6 @@
 import React from "react"
 import { useSelector } from "react-redux";
 import { Doughnut } from "react-chartjs-2";
-import { Container } from 'semantic-ui-react'
 
 const DisplayDoughnutChart = () => {
   const pastResults = useSelector(state => state.pastResults)

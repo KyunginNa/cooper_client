@@ -1,7 +1,6 @@
 import React from 'react'
 import { useSelector } from "react-redux";
 import { Line } from "react-chartjs-2";
-import { Container } from 'semantic-ui-react'
 
 const DisplayLineChart = () => {
   const pastResults = useSelector(state => state.pastResults)
