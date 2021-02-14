@@ -12,9 +12,10 @@ describe("User can log in", () => {
         uid: "user@test.com",
       },
     });
+    cy.get("[data-cy='btn-login']").click();
     cy.get("[data-cy='input-email']").type("user@test.com");
     cy.get("[data-cy='input-password']").type("password");
-    cy.get("[data-cy='btn-login']").click();
+    cy.get("[data-cy='btn-login-submit']").click();
     cy.get("[data-cy='login-message']").should(
       "contain",
       "Hello, user@test.com!"
@@ -30,9 +31,10 @@ describe("User can log in", () => {
         errors: ["Invalid login credentials. Please try again."],
       },
     });
+    cy.get("[data-cy='btn-login']").click();
     cy.get("[data-cy='input-email']").type("user@test.com");
     cy.get("[data-cy='input-password']").type("wrong_password");
-    cy.get("[data-cy='btn-login']").click();
+    cy.get("[data-cy='btn-login-submit']").click();
     cy.get("[data-cy='login-message']").should(
       "contain",
       "Invalid credentials. Please confirm your email and password."

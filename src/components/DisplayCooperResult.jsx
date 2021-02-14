@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import cooperCalculator from "../modules/cooperCalculator";
 import axios from "axios";
+import { Message, Icon, Button, Segment } from 'semantic-ui-react'
 
 const DisplayCooperResult = () => {
   const dispatch = useDispatch()
@@ -36,27 +37,45 @@ const DisplayCooperResult = () => {
 
   return (
     <>
-      {userInput.submitted && (
-        <>
-          <p data-cy="cooper-message">
-            {userInput.age} years old {userInput.gender} running {userInput.distance} meters.
-          </p>
-          <p data-cy="cooper-result">
-            Result: {cooperResult}
-          </p>
-        </>
-      )}
       {userInput.submitted &&
-        authenticated &&
-        !resultSaved &&
-        <button
-          data-cy="btn-save"
-          onClick={saveResult}
-        >Save
-      </button>
-      }
-      {resultSaved &&
-        <p data-cy="save-message">Your result was saved.</p>
+        <Segment>
+          <Message
+            attached
+            data-cy="cooper-result-message"
+            header={`Result: ${cooperResult}`}
+            content={`${userInput.age} years old ${userInput.gender} running ${userInput.distance} meters.`}
+          />
+          {!authenticated &&
+            <Message attached='bottom' warning>
+              <Icon name='lock open' />
+                Login to save the result.
+              </Message>
+          }
+          {userInput.submitted &&
+            authenticated &&
+            !resultSaved &&
+            <Button
+              data-cy="btn-save"
+              onClick={saveResult}
+              style={{ marginTop: "1em" }}
+              color="teal"
+            >Save
+            </Button>
+          }
+          {resultSaved &&
+            <Message
+              data-cy="save-message"
+              icon="save"
+              header="Your result was saved!"
+              list={[
+                `Age: ${userInput.age}`,
+                `Distance: ${userInput.gender}`,
+                `Result: ${cooperResult}`
+              ]}
+              color="teal"
+            />
+          }
+        </Segment>
       }
     </>
   )

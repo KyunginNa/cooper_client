@@ -7,12 +7,15 @@ describe("Calculates a cooper test result successfully", () => {
     cy.get('[data-cy="btn-result"]').click();
   });
   it("displays a cooper test message", () => {
-    cy.get('[data-cy="cooper-message"]').should(
+    cy.get('[data-cy="cooper-result-message"]').should(
       "contain",
       "23 years old female running 1000 meters."
     );
   });
   it("displays a cooper test result", () => {
-    cy.get('[data-cy="cooper-result"]').should("contain", "Result: Poor");
+    cy.get('[data-cy="cooper-result-message"]').should(
+      "contain",
+      "Result: Poor"
+    );
   });
 });
