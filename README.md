@@ -8,7 +8,7 @@ This is a web application that allows users to calculate their cooper test resul
 - [Deployed App(Netlify)](https://cooper-test-result.netlify.app/)
   - You can login with credentials below.  
     Email: user@test.com  
-    password: 123123
+    Password: 123123
 - [Github](https://github.com/KyunginNa/cooper_client)
 - [API](https://github.com/KyunginNa/cooper_api)
 
