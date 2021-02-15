@@ -7,10 +7,7 @@ import { Message, Icon, Button, Segment } from 'semantic-ui-react'
 const DisplayCooperResult = () => {
   const dispatch = useDispatch()
 
-  const userInput = useSelector(state => state.input)
-  const authenticated = useSelector(state => state.authenticated)
-  const resultSaved = useSelector(state => state.resultSaved)
-  const credentials = useSelector(state => state.credentials)
+  const { userInput, authenticated, resultSaved, credentials } = useSelector(state => state)
 
   let cooperResult = cooperCalculator(userInput.distance, userInput.gender, userInput.age)
   const saveResult = async () => {

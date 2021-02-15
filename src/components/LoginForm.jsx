@@ -5,9 +5,7 @@ import { Button, Modal, Form, Message } from 'semantic-ui-react'
 
 const LoginForm = () => {
   const dispatch = useDispatch();
-  const authenticated = useSelector(state => state.authenticated)
-  const credentials = useSelector(state => state.credentials)
-  const renderLoginForm = useSelector(state => state.renderLoginForm)
+  const { authenticated, credentials, renderLoginForm } = useSelector(state => state)
 
   const [open, setOpen] = useState(false)
 

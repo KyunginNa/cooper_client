@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { Line } from "react-chartjs-2";
 
 const DisplayLineChart = () => {
-  const pastResults = useSelector(state => state.pastResults)
+  const { pastResults } = useSelector(state => state)
 
   let graph;
   let distances = [];
