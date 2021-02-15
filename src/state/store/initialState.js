@@ -1,13 +1,13 @@
 const initialState = {
   input: {
-    distance: "",
-    gender: "",
-    age: "",
+    distance: '',
+    gender: '',
+    age: '',
     submitted: false,
   },
   renderLoginForm: true,
   resultSaved: false,
   pastResults: [],
-};
+}
 
-export default initialState;
+export default initialState

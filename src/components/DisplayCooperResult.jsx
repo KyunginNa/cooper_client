@@ -7,9 +7,9 @@ import { Message, Icon, Button, Segment } from 'semantic-ui-react'
 const DisplayCooperResult = () => {
   const dispatch = useDispatch()
 
-  const { userInput, authenticated, resultSaved, credentials } = useSelector(state => state)
+  const { input, authenticated, resultSaved, credentials } = useSelector(state => state)
 
-  let cooperResult = cooperCalculator(userInput.distance, userInput.gender, userInput.age)
+  let cooperResult = cooperCalculator(input.distance, input.gender, input.age)
   const saveResult = async () => {
     const headers = {
       ...credentials,
@@ -19,7 +19,7 @@ const DisplayCooperResult = () => {
     try {
       await axios.post("/performance_data",
         {
-          performance_data: { data: { age: userInput.age, distance: userInput.distance, result: cooperResult } }
+          performance_data: { data: { age: input.age, distance: input.distance, result: cooperResult } }
         }, {
         headers: headers
       }
@@ -33,13 +33,13 @@ const DisplayCooperResult = () => {
 
   return (
     <>
-      {userInput.submitted &&
+      {input.submitted &&
         <Segment>
           <Message
             attached
             data-cy="cooper-result-message"
             header={`Result: ${cooperResult}`}
-            content={`${userInput.age} years old ${userInput.gender} running ${userInput.distance} meters.`}
+            content={`${input.age} years old ${input.gender} running ${input.distance} meters.`}
           />
           {!authenticated &&
             <Message attached='bottom' warning>
@@ -47,7 +47,7 @@ const DisplayCooperResult = () => {
                 Login to save the result.
               </Message>
           }
-          {userInput.submitted &&
+          {input.submitted &&
             authenticated &&
             !resultSaved &&
             <Button
@@ -64,8 +64,8 @@ const DisplayCooperResult = () => {
               icon="save"
               header="Your result was saved!"
               list={[
-                `Age: ${userInput.age}`,
-                `Distance: ${userInput.gender}`,
+                `Age: ${input.age}`,
+                `Distance: ${input.gender}`,
                 `Result: ${cooperResult}`
               ]}
               color="teal"
