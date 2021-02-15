@@ -39,6 +39,7 @@ const DisplayPastResults = () => {
             data-cy="btn-show-index"
             onClick={() => { toggleResults(); }}
             color="teal"
+            style={{ margin: 10, marginTop: 25 }}
           >Show Past Results
           </Button>
           {renderResults &&
