@@ -7,7 +7,7 @@ import { Container } from 'semantic-ui-react'
 
 const App = () => {
   return (
-    <Container style={{marginTop: "1em"}}>
+    <Container style={{ marginTop: "1em" }}>
       <LoginForm />
       <InputForm />
       <DisplayCooperResult />

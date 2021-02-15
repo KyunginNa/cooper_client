@@ -8,7 +8,7 @@ import { Divider, Grid, Button } from 'semantic-ui-react'
 const DisplayPastResults = () => {
   const dispatch = useDispatch()
 
-  const credentials = useSelector(state => state.credentials)
+  const { credentials, resultSaved } = useSelector(state => state)
   const [renderResults, setRenderResults] = useState(false)
 
   const getResult = async () => {
@@ -24,7 +24,7 @@ const DisplayPastResults = () => {
     dispatch({ type: 'GET_PAST_RESULTS', payload: pastResults.data.entries })
   }
 
-  useEffect(() => { getResult() })
+  useEffect(() => { getResult() }, [resultSaved])
 
   const toggleResults = () => {
     setRenderResults(!renderResults)
