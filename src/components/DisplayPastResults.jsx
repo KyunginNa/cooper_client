@@ -11,20 +11,21 @@ const DisplayPastResults = () => {
   const { credentials, resultSaved } = useSelector(state => state)
   const [renderResults, setRenderResults] = useState(false)
 
-  const getResult = async () => {
-    let pastResults = await axios.get("/performance_data",
-      {
-        headers: {
-          ...credentials,
-          "Content-type": "application/json",
-          Accept: "application/json"
+  useEffect(() => {
+    async function getResult() {
+      let pastResults = await axios.get("/performance_data",
+        {
+          headers: {
+            ...credentials,
+            "Content-type": "application/json",
+            Accept: "application/json"
+          }
         }
-      }
-    )
-    dispatch({ type: 'GET_PAST_RESULTS', payload: pastResults.data.entries })
-  }
-
-  useEffect(() => { getResult() }, [resultSaved])
+      )
+      dispatch({ type: 'GET_PAST_RESULTS', payload: pastResults.data.entries })
+    }
+    getResult()
+  }, [resultSaved, credentials, dispatch])
 
   const toggleResults = () => {
     setRenderResults(!renderResults)
@@ -36,7 +37,7 @@ const DisplayPastResults = () => {
         <>
           <Button
             data-cy="btn-show-index"
-            onClick={() => { getResult(); toggleResults(); }}
+            onClick={() => { toggleResults(); }}
             color="teal"
           >Show Past Results
           </Button>
