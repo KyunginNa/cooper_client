@@ -53,7 +53,13 @@ const LoginForm = () => {
           </Modal.Content>
           <Modal.Description>
             {authenticated === false &&
-              <p data-cy="login-message">Invalid credentials. Please confirm your email and password.</p>}
+              <Message
+                data-cy="login-message"
+                negative
+                style={{ margin: 10 }}
+              >Invalid credentials. Please confirm your email and password.
+              </Message>
+            }
           </Modal.Description>
         </Modal>
       }
